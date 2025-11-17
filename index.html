@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+    <title>Carregando</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #F2F0EB;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ampulheta {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #034C1B;
+            border-radius: 50%;
+            position: relative;
+            animation: girar-formar 2s ease-in-out infinite;
+        }
+
+        @keyframes girar-formar {
+            0% { 
+                transform: rotate(0deg);
+                border-radius: 50%;
+                border-style: dashed;
+            }
+            25% { 
+                transform: rotate(90deg);
+                border-radius: 10%;
+                border-style: solid;
+            }
+            50% { 
+                transform: rotate(180deg);
+                border-radius: 0%;
+                border-style: solid;
+            }
+            75% { 
+                transform: rotate(270deg);
+                border-radius: 10%;
+                border-style: solid;
+            }
+            100% { 
+                transform: rotate(360deg);
+                border-radius: 50%;
+                border-style: dashed;
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            background-color: #F2F0EB;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.8s ease;
+        }
+
+        body.carregamento-finalizado {
+            background-color: rgba(242, 240, 235, 0);
+        }
+    </style>
+</head>
+<body id="corpo">
+    <div class="ampulheta" id="ampulheta"></div>
+
+    <script>
+        let paginaCarregada = false;
+        let tempoMinimo = false;
+
+        function verificarCarregamento() {
+            if (document.readyState === 'complete') {
+                paginaCarregada = true;
+                verificarRemocao();
+            }
+        }
+
+        function verificarRemocao() {
+            if (paginaCarregada && tempoMinimo) {
+                // Adiciona classe de transição suave
+                document.getElementById('corpo').classList.add('carregamento-finalizado');
+                document.getElementById('ampulheta').classList.add('fade-out');
+                
+                // Aguarda a animação de saída antes de redirecionar
+                setTimeout(() => {
+                    // Cria um overlay para transição suave
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.width = '100vw';
+                    overlay.style.height = '100vh';
+                    overlay.style.background = 'linear-gradient(45deg, rgba(3, 76, 27, 0.1), rgba(242, 240, 235, 0.9))';
+                    overlay.style.zIndex = '9999';
+                    overlay.style.opacity = '0';
+                    overlay.style.transition = 'opacity 0.8s ease';
+                    document.body.appendChild(overlay);
+                    
+                    // Fade in do overlay
+                    setTimeout(() => {
+                        overlay.style.opacity = '1';
+                    }, 50);
+                    
+                    // Remove tudo e redireciona
+                    setTimeout(() => {
+                        document.getElementById('corpo').style.display = 'none';
+                            window.location.href = '/AgroAnalyst-VersaoFinal/index.html';
+                        console.log('Carregamento finalizado com transição suave!');
+                    }, 800);
+                }, 600);
+            }
+        }
+
+        setTimeout(() => {
+            tempoMinimo = true;
+            verificarRemocao();
+        }, 2000);
+
+        if (document.readyState === 'complete') {
+            verificarCarregamento();
+        } else {
+            window.addEventListener('load', verificarCarregamento);
+        }
+    </script>
+</body>
+</html>
