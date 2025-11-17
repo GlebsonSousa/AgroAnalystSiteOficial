@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/style.css">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon"> 
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/navbar.css">
+    
+    <script src="/AgroAnalyst-VersaoFinal/src/js/volta-para-home.js"></script>
+    <script src="/AgroAnalyst-VersaoFinal/src/js/home-script.js"></script>
+    <script src="/AgroAnalyst-VersaoFinal/src/js/barra-lateral.js" defer></script>
+
+    <title>AgroAnalyst</title>
+</head>
+<body>
+
+    <div class="barra-lateral">
+        <!-- Botão de menu -->
+        <button class="menu-btn" id="menuBtn">
+        <div class="menu-icon"></div>
+        </button>
+
+        <!-- Sobreposição -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Menu lateral -->
+        <nav class="sidebar" id="sidebar">
+        <a href="/AgroAnalyst-VersaoFinal/index.html"><span>🏠</span> Início</a>
+        <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/relatorio.html"><span>📄</span> Relatórios</a>
+        <a href="/AgroAnalyst-VersaoFinal/src/paginas/marketplace.html"><span>📊</span> Marketplace</a>
+        <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/dashboard.html"><span>⚙️</span> Configurações</a>
+        <a href="#"><span>🚪</span> Sair</a>
+        </nav>
+    </div>
+
+    <div id="nav-bar">
+        <div id="area-logo">
+            <img id="logo" src="/AgroAnalyst-VersaoFinal/src/img/Agroanalisty-1.webp" alt="">
+        </div>
+        <div id="area-navegacao">
+            <a href="">Inicio</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/perfil.html">Meu Perfil</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/quemSomos.html">Sobre nós</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/time.html">Time</a>
+            
+        </div>
+        <div class="login-cadastro">
+            <button id="login">Entrar</button>
+            <a id="cadastro">Cadastro</a>
+            <img id="logout" src="/AgroAnalyst-VersaoFinal/src/img/sair.png" alt="Logout">
+        </div>
+    </div>
+    <div class="home">
+        <div class="conteudo">
+            <div class="area-esquerda">
+                <h1 id="h1-padrao"> Plantamos a tecnologia no seu <span id="texto-verde">cultivo.<span></h1>
+                <div id="barra-separadora">
+                    <span id="barra-separar"></span>
+                </div>
+                <p>Entregando qualidade em cada detalhe da sua plantação, buscando oferecer facilidade e eficiencia.</p>
+                
+                <div class="area-btn">
+                    <button id="btn-analisar">Analisar Solo</button>
+                </div>
+            </div>
+            <div class="area-direita">
+                <img id="img-milho" src="/AgroAnalyst-VersaoFinal/src/img/milho.webp" alt="imagem-soja">
+                <img id="img-dinheiro" src="/AgroAnalyst-VersaoFinal/src/img/img_dinheiro_ajustada.webp" alt="imagem-dinheiro">
+            </div>
+        </div>
+        <div class="home-monitoramento">
+            <div class="monitoramento-esquerda">
+                <div class="monitoramento-titulo-subtitulo">
+                    <h2>
+                        Monitoramento de plantio através de imagens via satélite.
+                    </h2>
+                    <p>
+                        A alta produtividade e eficiência exigem a aplicação de tecnologias de ponta.
+                        A AgroAnalyst almeja a implantação de tais tecnologias a todos os seus clientes, garantindo um aumento uniforme e consistente na qualidade de vida de seus consumidores.
+                    </p>
+                </div>
+                <div class="monitoramento-sat-receita">
+                    <div class="area-img-sat">
+                        <div class="topo-sat">
+                            <img src="/AgroAnalyst-VersaoFinal/src/img/space-satellite.webp" alt="">
+                            <span>Satélites</span>
+                        </div>
+                        <div class="monitoramento-porcentagem-sat">
+                            <p>+ <span id="porcentagem">30</span>% <img src="/src/img/space-satellite.pn" alt=""></p> 
+                            <span>O uso de imagens via satélite proporciona um aumento médio de até 30% na produtividade dos agricultores.</span>
+                        </div>
+                    </div>
+                    <div class="area-img-rec">
+                        <div class="topo-rec">
+                            <img src="/AgroAnalyst-VersaoFinal/src/img/dinheiro_monit.webp" alt="">
+                            <span>Receita</span>
+                        </div>
+                        <div class="monitoramento-porcentagem-rec">
+                            <p>+ <span id="porcentagem">37</span>% <img src="" alt=""></p> 
+                            <span>Os mesmos agricultores também tiveram um aumento de 37% na receita.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monitoramento-direita">
+                <img id="img-drone-colheita" src="/AgroAnalyst-VersaoFinal/src/img/CampoSojaDrone.webp" alt="IMG-drone monitorando colheita">
+            </div>
+
+        </div>
+
+            
+        </div>
+    </div>
+    
+    <!-- Script Firebase de autenticação -->
+    <script defer type="module" src="/auth/auth.js"></script>
+
+
+
+
+</body>
+</html>

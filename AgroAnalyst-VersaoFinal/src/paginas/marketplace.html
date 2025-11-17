@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/market.css">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+
+    <title>Marketplace</title>
+
+
+    <script src="/AgroAnalyst-VersaoFinal/src/js/barra-lateral.js" defer></script>
+
+</head>
+<body>
+
+    <div class="barra-lateral">
+        <!-- Botão de menu -->
+        <button class="menu-btn" id="menuBtn">
+        <div class="menu-icon"></div>
+        </button>
+
+        <!-- Sobreposição -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Menu lateral -->
+        <nav class="sidebar" id="sidebar">
+        <a href="/AgroAnalyst-VersaoFinal/index.html"><span>🏠</span> Início</a>
+        <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/relatorio.html"><span>📄</span> Relatórios</a>
+        <a href="/AgroAnalyst-VersaoFinal/src/paginas/marketplace.html"><span>📊</span> Marketplace</a>
+        <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/dashboard.html"><span>⚙️</span> Configurações</a>
+        <a href="#"><span>🚪</span> Sair</a>
+        </nav>
+    </div>
+    <div id="nav-bar">
+        <div id="area-logo">
+            <img id="logo" src="/AgroAnalyst-VersaoFinal/src/img/Agroanalisty-1.webp" alt="">
+            <img id="logo-circulo" src="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp">
+        </div>
+        <div id="area-navegacao">
+            <a href="/AgroAnalyst-VersaoFinal/index.html">Inicio</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/perfil.html">Meu Perfil</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/quemSomos.html">Sobre nós</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/time.html">Time</a>
+            
+        </div>
+        <div class="login-cadastro">
+            <button id="loginn">Entrar</button>
+            <a id="cadastro">Cadastro</a>
+            <img id="logout" src="/AgroAnalyst-VersaoFinal/src/img/sair.png" alt="Logout">
+        </div>
+    </div>
+
+    <!-- Script Firebase de autenticação -->
+    <script defer type="module" src="/auth/auth.js"></script>
+
+</body>
+</html>

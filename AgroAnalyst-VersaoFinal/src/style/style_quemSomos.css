@@ -1,0 +1,456 @@
+/*Fonte do titulo*/
+@font-face {
+    font-family: Barrio;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/BreeSerif-Regular.ttf)
+}   
+
+/*Fonte dos textos de navegação*/
+@font-face {
+    font-family: seasons;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)
+} 
+
+@font-face {
+    font-family: marry;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Merriweather-VariableFont_opsz\,wdth\,wght.ttf)
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-self: center;
+    min-height: 100vh;
+    background-color: #F2F0EB;
+}
+
+/*Define as propriedades gerais da página*/
+.quem-somos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    max-width: 1200px;
+    min-width: 700px;
+    min-height: 100vh;
+    background-color: #F2F0EB;
+    z-index: 0;
+}
+
+
+/*esta div é a div pai da parte principal da pagina home*/
+.conteudo {
+    display: flex;
+    margin-top: 7rem;
+    height: calc(100vh - 70px);
+    height: 90vh;
+    max-height: 90vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Tudo que esta dentro da div area esquerda*/
+.area-esquerda {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 5rem;
+    margin-left: 2rem;
+}
+
+.informacoes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#h1-padrao {
+    font-family: Barrio;
+    max-width: 90%;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+#h1-padrao span {
+    font-family: Barrio;
+}
+
+#barra-separar {
+    width: 400px;
+    height: 3px;
+    border-radius: 6px;
+    background-color: #FFD114;
+    margin-top: 2rem;
+}
+
+
+#texto-verde{
+    color: #034C1B;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.area-esquerda p {
+    padding-top: 1.5rem ;
+    font-family:marry;
+    font-size: 16px;
+    color: #515150;
+}
+
+/*Div que cuida da area em que o botao FALE CONOSCO ficará*/
+.area-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.area-btn button {
+    background-color: #056F33;
+    color: white;
+    width: 200px;
+    height: 45px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 20px;
+    transition: all 0.3s;
+}   
+
+.area-btn button:hover {
+    background-color: #034C1B;
+}
+
+.area-direita {
+    display: flex;
+    position: relative;
+    align-items: start;
+    justify-content: center;
+    margin-left: 4rem;
+    width: 100%;
+    height: 85%;
+}
+
+
+
+.area-imagens {
+    position: relative;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.area-imagens img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    inset: 0;
+    margin: auto;
+    transition: all 0.3s;
+}
+
+#img-drone-campo {
+    border-radius: 50%;
+    z-index: 2;
+}
+
+#img-drone-campo:hover {
+    transform: scale(105%);
+}
+
+
+
+/*Pagina 2 - trator*/
+.fundo_da_pagina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-image: url("/AgroAnalyst-VersaoFinal/src/img/trator3.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*esta div é dos textos da página*/
+.corpo {
+    display:flex;
+    height: calc(100% - 70px);
+    width: 90%;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.lado_direito {
+    display: flex;
+    justify-content: start;
+    align-items: center ;
+    font-family: Barrio;
+    width: 55%;
+    height: 70%;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    margin-left: 1rem;
+}
+
+#texto-superior {
+    font-family: Barrio;
+    font-size: 45px;
+    font-weight: 400;
+    color: white;
+}
+
+.lado_direito p {
+    margin-top: 2rem;
+    font-size: 25px;
+    width: 90%;
+}
+
+
+
+
+/*Area de edição para adequação a dispositivos com diferentes telas*/
+@media(max-width: 1000px) {
+    #area-logo img{
+        margin-left: 2rem;
+        transform: scale(130%);
+        margin-bottom: 3.5%;
+    }
+
+    #h1-padrao {
+        font-family: Barrio;
+        max-width: 90%;
+        font-size: 45px;
+        font-weight: 400;
+    }
+
+    #barra-separar {
+        display: block;
+        width: 200px;
+        height: 2px;
+        border-radius: 6px;
+        background-color: #FFD114;
+        margin-top: 2rem;
+    }
+
+
+}
+
+/*Esta area serve para criar as animações do trevo*/
+/*Para girar 360 graus */
+@keyframes girar {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+/*Para dar zoom*/
+  @keyframes zoom {
+    0%, 100% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.3;
+    }
+  }
+
+/*----------------- barra lateral----------------------------*/
+:root {
+      --verde-claro: #056F33;
+      --verde-pastel: #ffffff;
+      --verde-escuro: #034C1B;
+      --off-white: #F8F8F4;
+      --texto: #2E3D32;
+      --sombra: rgba(0, 0, 0, 0.1);
+      --overlay: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+
+    /* 🍔 Botão do menu */
+    .menu-btn {
+      position: fixed;
+      top: 25px;
+      right: 280px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--verde-claro);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px var(--sombra);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: var(--verde-escuro);
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      position: relative;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon::before {
+      top: -8px;
+    }
+
+    .menu-icon::after {
+      top: 8px;
+    }
+
+    /* Animação do ícone */
+    .menu-btn.active .menu-icon {
+      background: transparent;
+    }
+
+    .menu-btn.active .menu-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .menu-btn.active .menu-icon::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* 🧭 Sidebar */
+    .sidebar {
+      position: fixed;
+      right: 1200px;
+      width: 250px;
+      height: 100%;
+      background-color: var(--verde-pastel);
+      box-shadow: 2px 0 10px var(--sombra);
+      transition: 0.3s ease;
+      padding-top: 100px;
+      z-index: 5;
+      opacity: 0;
+    }
+
+    .sidebar.open {
+      right: 0;
+      opacity: 1;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      color: var(--texto);
+      font-size: 17px;
+      transition: background 0.2s, border-left 0.2s;
+      border-left: 4px solid transparent;
+      font-family: Barrio;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--verde-claro);
+      border-left: 4px solid var(--verde-escuro);
+      color: white;
+    }
+
+    .sidebar a span {
+      margin-left: 10px;
+    }
+
+    /* 🔳 Efeito de sobreposição */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 1;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 🧩 Conteúdo principal */
+    .content {
+      padding: 60px 30px;
+      transition: all 0.4s ease;
+    }
+
+    /* ✨ Efeito suave ao abrir o menu */
+    .blurred {
+      filter: blur(3px);
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+
+    header {
+      background-color: var(--verde-claro);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    main p {
+        
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+/*--------------------------------------------------------------------------*/
+
+
+/*FIM DA ESTILIZAÇÃO DA HOME*/

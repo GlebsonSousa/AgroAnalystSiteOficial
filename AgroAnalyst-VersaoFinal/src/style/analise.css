@@ -1,0 +1,771 @@
+/*Fonte do titulo*/
+@font-face {
+    font-family: Barrio;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/BreeSerif-Regular.ttf)
+}   
+
+/*Fonte dos textos de navegação*/
+@font-face {
+    font-family: seasons;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)
+} 
+
+@font-face {
+    font-family: marry;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Merriweather-VariableFont_opsz\,wdth\,wght.ttf)
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    background-color: #F2F0EB;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.analise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10rem;
+    max-width: 1200px;
+    padding: 2rem;
+    padding-bottom: 0;
+    width: 90vw;
+}
+
+/* Título e descrição */
+
+.titulo-analise {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 90%;
+    margin-bottom: 5rem;
+    gap: 1.5rem;
+}
+
+#titulo-analise-solo {
+    font-family: Barrio;
+    font-size: 65px;
+    color: #034C1B;
+    font-weight: 600;
+    width: 100%;
+}
+
+#descricao-analise-solo {
+    font-size: 20px;
+    color: #515150;
+    font-family: Barrio;
+    width: 80%;
+}
+
+/* Campo de busca e botão */
+.input-analise {
+    width: 100%;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+#input-cidade {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#botao-analisar-solo {
+    font-family: Barrio;
+    font-size: 16px;
+    background-color: #034C1B;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 400;
+    transition: all 0.3s;
+    cursor: pointer;
+    width: 200px;
+}
+
+#botao-analisar-solo:hover {
+    background-color: #056F33;
+}
+
+.separa {
+    display: flex;
+    align-items: center;
+    width: 10px;
+    height: 100%;
+}
+
+.separa span{
+    width: 2px;
+    height: 80%;
+    background-color: #b6b6b6;
+}
+
+/* Conteúdo em colunas */
+.conteudo-analise {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 90%;
+}
+
+.coluna-esquerda, .coluna-direita {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 90%;
+    height: 100%;
+}
+
+
+
+.coluna-esquerda p, .coluna-direita p,
+.coluna-direita li {
+    margin-bottom: 0.5rem;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 90%;
+    font-family: Barrio;
+    color: #034C1B;
+}
+
+.coluna-esquerda span {
+    font-family: marry;
+    font-size: 20px;
+    color: black;
+    width: 90%;
+}
+
+.coluna-esquerda ul, .coluna-direita ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    width: 60%;
+    font-size: 20px;
+    font-family: marry;
+}
+
+.coluna-direita ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coluna-direita li {
+    color: #515150;
+   
+}
+
+/* Título das culturas */
+#titulo-culturas {
+    margin-bottom: 1rem;
+    font-family: Barrio;
+    font-size: 28px;
+    color: #034C1B;
+}
+
+/* Imagem do mapa */
+.area-mapa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+    margin-top: 2rem;
+}
+
+.area-mapa img {
+    max-height: 600px;
+    border-radius: 15px;
+}
+
+
+
+/* Seção de Análise Detalhada */
+.analise-detalhada {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.secao-titulo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.secao-titulo h1 {
+    font-size: 42px;
+    color: #034C1B;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.secao-titulo p {
+    font-size: 16px;
+    color: #515150;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Grid de Informações do Solo */
+.info-solo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.card-info {
+    background: linear-gradient(135deg, #056F33 0%, #034C1B 100%);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    transition: transform 0.5s ease;
+}
+
+.card-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(5, 111, 51, 0.3);
+}
+
+.card-info:hover::before {
+    transform: translate(-25%, -25%);
+}
+
+.card-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-info .icone {
+    font-size: 24px;
+}
+
+.card-info .valor {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.card-info .descricao {
+    font-size: 13px;
+    opacity: 0.9;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+/* Seção de Culturas Recomendadas */
+.culturas-recomendadas {
+    margin-top: 50px;
+}
+
+.culturas-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #FFD114;
+}
+
+.culturas-header h2 {
+    font-size: 32px;
+    color: #034C1B;
+    font-weight: 700;
+}
+
+.culturas-header .icone-header {
+    font-size: 36px;
+}
+
+.lista-culturas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card-cultura {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.card-cultura:hover {
+    border-color: #056F33;
+    box-shadow: 0 6px 20px rgba(5, 111, 51, 0.15);
+    transform: translateY(-3px);
+}
+
+.card-cultura-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.card-cultura-emoji {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.card-cultura-info h3 {
+    font-size: 22px;
+    color: #034C1B;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.categoria-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #FFD114;
+    color: #034C1B;
+}
+
+.score-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #056F33;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.card-cultura-detalhes {
+    margin-top: 15px;
+}
+
+.detalhe-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #515150;
+    line-height: 1.6;
+}
+
+.detalhe-item .icone-check {
+    color: #056F33;
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+/* Seção de Método de Busca */
+.metodo-busca {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f8f8f4;
+    border-left: 4px solid #FFD114;
+    border-radius: 8px;
+}
+
+.metodo-busca p {
+    color: #515150;
+    font-size: 14px;
+}
+
+.metodo-busca strong {
+    color: #034C1B;
+}
+
+/* Loader */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #515150;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #056F33;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .analise-detalhada {
+        padding: 25px;
+    }
+
+    .secao-titulo h1 {
+        font-size: 32px;
+    }
+
+    .info-solo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-culturas {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*FIM DA PRIMEIRA PARTE*/
+
+/* 🌧️ Estilização da seção de chuva */
+#chuva {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffffff00;
+    border-radius: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+#chuva h2 {
+font-size: 40px;
+margin-bottom: 20px;
+color: #2f6c2f;
+font-family: Barrio;
+font-weight: 800;
+}
+
+#chuva p{
+    font-size: 20px;
+    margin-bottom: 2rem;
+    font-family: Barrio;
+    width: 60%;
+    color: #515150;
+}
+
+.container-grafico-chuva {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    min-height: 300px;
+    height: auto;
+    margin: 0 auto;
+    border: solid 2px #51515025;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+#grafico-chuva {
+width: 100% !important;
+height: 100% !important;
+}
+  
+
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    flex-direction: row;background-color: black;
+    height: 50px;
+}
+
+.container-rodape {
+    display: flex;
+    color: white;
+    gap: 1rem;
+}
+
+.container-rodape a {
+    color: #838383;
+}
+
+
+
+
+/* Estilização para o mapa interativo */
+#mapa-interativo {
+    width: 85%;
+    height: 100%;
+    max-height: 600px; /* Defina uma altura para o mapa */
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+
+/* Estilos para o spinner de carregamento */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 2;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+/*----------------- barra lateral----------------------------*/
+:root {
+      --verde-claro: #056F33;
+      --verde-pastel: #ffffff;
+      --verde-escuro: #034C1B;
+      --off-white: #F8F8F4;
+      --texto: #2E3D32;
+      --sombra: rgba(0, 0, 0, 0.1);
+      --overlay: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+
+    /* 🍔 Botão do menu */
+    .menu-btn {
+      position: fixed;
+      top: 25px;
+      right: 280px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--verde-claro);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px var(--sombra);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: var(--verde-escuro);
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      position: relative;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon::before {
+      top: -8px;
+    }
+
+    .menu-icon::after {
+      top: 8px;
+    }
+
+    /* Animação do ícone */
+    .menu-btn.active .menu-icon {
+      background: transparent;
+    }
+
+    .menu-btn.active .menu-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .menu-btn.active .menu-icon::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* 🧭 Sidebar */
+    .sidebar {
+      position: fixed;
+      right: 1200px;
+      width: 250px;
+      height: 100%;
+      background-color: var(--verde-pastel);
+      box-shadow: 2px 0 10px var(--sombra);
+      transition: 0.3s ease;
+      padding-top: 100px;
+      z-index: 10000;
+      opacity: 0;
+    }
+
+    .sidebar.open {
+      right: 0;
+      opacity: 1;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      color: var(--texto);
+      font-size: 17px;
+      transition: background 0.2s, border-left 0.2s;
+      border-left: 4px solid transparent;
+      font-family: Barrio;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--verde-claro);
+      border-left: 4px solid var(--verde-escuro);
+      color: white;
+    }
+
+    .sidebar a span {
+      margin-left: 10px;
+    }
+
+    /* 🔳 Efeito de sobreposição */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 9990;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 🧩 Conteúdo principal */
+    .content {
+      padding: 60px 30px;
+      transition: all 0.4s ease;
+    }
+
+    /* ✨ Efeito suave ao abrir o menu */
+    .blurred {
+      filter: blur(3px);
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+
+    header {
+      background-color: var(--verde-claro);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    main p {
+        
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+/*--------------------------------------------------------------------------*/
+
+
+/*FIM DA ESTILIZAÇÃO DA HOME*/

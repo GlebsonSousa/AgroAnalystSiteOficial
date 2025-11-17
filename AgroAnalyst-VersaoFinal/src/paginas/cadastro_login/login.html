@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/style_login.css">
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/navbar.css">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+    
+    <script defer src="/AgroAnalyst-VersaoFinal/src/js/login.js"></script>
+    <script defer src="/AgroAnalyst-VersaoFinal/src/js/nav-bar.js"></script>
+
+    <title>Login</title>
+</head>
+<body>
+    <div id="nav-bar">
+        <div id="area-logo">
+            <img id="logo" src="/AgroAnalyst-VersaoFinal/src/img/Agroanalisty-1.webp" alt="">
+        </div>
+        <div id="area-navegacao">
+            <a href="">Inicio</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/perfil.html">Meu Perfil</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/quemSomos.html">Sobre nós</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/time.html">Time</a> 
+        </div>
+
+    </div>
+    <div class="formulario_login">
+        <div class="esquerda">
+
+        </div>
+        <div class="direita">
+            <div class="corpo_form_login">
+                <form id="form">
+                    <center>
+                        <h1>LOGIN</h1>
+                    </center>
+                    <legend id="text">Usuário ou Email</legend>
+                    <input id="email" name="email" type="text" placeholder="Informe seu email ou usuário aqui..." maxlength="100" required>
+                    
+                    <legend id="text">Senha</legend>
+                    <input id="senha" name="senha" type="password" placeholder="Insira sua senha aqui..." maxlength="100" required>
+                    
+                    <div id="area-esqueceu-senha">
+                        <span><input id="caixa" type="checkbox" onclick="">Lembrar informações</span>
+                        <a id="links-estilo" href="">Esqueceu a senha ?</a>
+                    </div>
+                   
+                    <div class="botoes">
+                        <button id="btn-login" type="submit" value="LOGAR">ENTRAR</button>
+                    </div>
+                    <div id="area-pg-cadastro">
+                        Não tem uma conta?&nbsp;<a id="links-estilo" href="/AgroAnalyst-VersaoFinal/src/paginas/cadastro_login/cadastro.html">  Cadastre-se&nbsp;</a>  agora mesmo!
+                    </div>
+                </form>
+                <div class="area-login-google">    
+                    <button id="login-google"></button>Faça login com o Google
+                </div>    
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Script Firebase de autenticação -->
+    <script defer type="module" src="/auth/auth.js"></script>
+
+
+</body>
+</html>

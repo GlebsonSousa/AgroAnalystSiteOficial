@@ -1,0 +1,242 @@
+/*Fonte do titulo*/
+@font-face {
+    font-family: Barrio;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/BreeSerif-Regular.ttf)
+}   
+
+/*Fonte dos textos de navegação*/
+@font-face {
+    font-family: seasons;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)
+} 
+
+@font-face {
+    font-family: marry;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Merriweather-VariableFont_opsz\,wdth\,wght.ttf)
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Poppins/Poppins-Light.ttf)
+}
+
+body {
+    display: flex;
+    align-items:center ;
+    flex-direction: column;
+    background-color: #C8E0BA ;
+    width: auto;
+    height: auto;
+}
+
+.formulario_login {
+    margin-top: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    height: 80vh;
+    border-radius: 10px;
+    min-width: 700px;
+    min-height: 500px;
+}
+
+.formulario_login span {
+    display: flex;
+    align-items: center;
+}
+
+
+.formulario_login button, .corpo_form_login, #email,
+#senha, #area-pg-cadastro, #area-esqueceu-senha,
+#links-estilo, #form h1 {
+
+    font-family: Poppins;
+    font-weight: 300;
+}
+
+#text {
+    font-family: Poppins;
+    margin-top: 10%;
+}
+
+
+.area-login-google {
+    width: 100%;
+    margin-top: 1rem; /* empurra para baixo */
+    order: 5; /* garante que apareça no fim */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 1rem;
+    font-family: Barrio;
+    font-size: 20px;
+    border: none;
+}
+
+
+#login-google {
+    background-image: url(/AgroAnalyst-VersaoFinal/src/img/google-logo.webp);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-left: 30px; /* espaço para o ícone */
+    width: 14%;
+    height: 60px;
+    border-radius: 200px ;
+    border: none;
+}
+
+/* Estilizando o botão de login quando o mouse passar sobre ele */
+#login-google:hover {
+    background-color: darkgreen; /* Cor de fundo mais escura quando o mouse passa por cima */
+    transition: all 0.8s; /* Transição suave */
+    border: none;
+}
+.esquerda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/AgroAnalyst-VersaoFinal/src/img/login-img.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.direita {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F0EB;
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.corpo_form_login {
+    font-family: sans-serif;
+    color:black;
+    align-items: top;
+    justify-content: center;
+    display:flex;
+    background-color: #F2F0EB;
+    width: 80%;
+    height: 90%;
+    flex-direction: column
+}
+
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+#btn-login {
+    margin-top: 10%;
+    background-color: #056F33;
+    color: white;
+    border: none;
+    width: 48.5%;
+    height: 40px;
+    border-radius: 35px;
+    font-size: 22px;
+    transition: all 0.300s;
+}
+
+#btn-login:hover {
+    transform: scale(90%);
+}
+
+#area-esqueceu-senha {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#caixa {
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    accent-color: #056F33;
+    background-color: #056F33;
+    border: 2px solid #056F33;
+    border-radius: 4px;
+    border: none;
+}
+
+#links-estilo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+#form {
+    display: flex;
+    background-color: #F2F0EB;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+#form h1 {
+    font-size: 45px;
+    font-weight:900
+}
+
+#form input{
+    transition: all 0.300s;
+}
+
+#form input:focus {
+    background-color: #60806d;
+}
+
+#email {
+    margin-top: 1%;
+    padding-left: 10px;
+    background-color: #056F33;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    height: 35px;
+    width: 97%;
+    min-height: 35px;
+
+}
+
+#email::placeholder {
+    color: white;
+}
+
+#senha {
+    margin-top: 1%;
+    padding-left: 10px;
+    background-color: #056F33;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    height: 35px;
+    width: 97%;
+    min-height: 35px;
+}
+#senha::placeholder {
+    color: white;
+}
+
+#area-pg-cadastro {
+    margin-top: 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}

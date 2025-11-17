@@ -1,0 +1,135 @@
+.barra-lateral {
+  display: none;
+}
+
+
+#nav-bar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+    min-width: 700px;
+    max-width: 1200px;
+    background-color: white;
+    margin-top: 1rem;
+    border-radius: 35px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+/*Espaço especifico da logo*/
+#area-logo {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    max-width: 400px;
+    height: 100%;
+    overflow: hidden;
+}
+
+#area-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* <-- adiciona alinhamento vertical */
+  width: 30%;
+  max-width: 400px;
+  height: 100%;
+  overflow: hidden;
+}
+
+#logo {
+  display: flex;
+  max-height: 150%;
+  width: fit-content;
+  transform: scale(100%);
+}
+
+#logo-circulo {
+  display: none;
+  height: 35px;
+  object-fit: contain;
+  transform: none; /* remove herança da regra anterior */
+  margin: 0 auto;
+  padding-top: 3%;
+  border-radius: 50px;
+}
+
+/*Area para edição da area de navegação da nav-bar*/
+#area-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 70%; 
+    height: 100%;   
+}
+
+#area-navegacao a{
+    font-family: Barrio;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+    transition: ease-in-out 0.3s;
+}
+
+#area-navegacao a:hover {
+    color: #056F33;
+
+}
+
+/* Estilizando o contêiner */
+.login-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* empurra tudo pro lado direito */
+    gap: 1rem;
+    width: 20%;
+    margin-right: 3rem;
+    position: relative; /* para facilitar ajustes futuros */
+}
+/* Estilizando o botão de login */
+#login {
+    background-color: green; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none; /* Removendo borda */
+    padding: 10px 50px;
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Mudando o cursor para indicar que é clicável */
+    border-radius: 25px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor */
+    font-family: Barrio;
+}
+
+/* Estilizando o botão de login quando o mouse passar sobre ele */
+#login:hover {
+    background-color: darkgreen; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+/* Estilizando o link de cadastro */
+#cadastro {
+    display: block; /* Fazendo o link ser exibido em um bloco (abaixo do botão) */
+    color: #515150; /* Cor do texto preto */
+    text-decoration: none; /* Removendo o sublinhado do link */
+    font-size: 20px; /* Tamanho da fonte */
+    font-family: Barrio;
+}
+
+/* Alterando a cor do link quando o mouse passa por cima */
+#cadastro:hover {
+    color: green; /* Mudando a cor para verde quando o mouse passa por cima */
+    cursor: pointer;
+}
+
+#logout {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: none; /* começa oculto */
+}
+
+#logout:hover {
+  transform: scale(1.1);
+}

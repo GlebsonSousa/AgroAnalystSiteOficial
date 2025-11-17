@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/analise.css">
+
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/js/volta-para-home.js">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/navbar.css">
+
+    <title>AgroAnalyst - Análise de Solo</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="/AgroAnalyst-VersaoFinal/src/js/analise-script.js"></script>
+    <!--<script src="/AgroAnalyst-VersaoFinal/src/js/barra-lateral.js" defer></script>-->
+
+
+    <!-- Leaflet Draw -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css"/>
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+
+    <!-- Turf.js (para cálculo da área) -->
+    <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="barra-lateral">
+        <!-- Botão de menu -->
+        <button class="menu-btn" id="menuBtn">
+        <div class="menu-icon"></div>
+        </button>
+
+        <!-- Sobreposição -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Menu lateral -->
+        <nav class="sidebar" id="sidebar">
+            <a href="/AgroAnalyst-VersaoFinal/index.html"><span>🏠</span> Início</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/relatorio.html"><span>📄</span> Relatórios</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/marketplace.html"><span>📊</span> Marketplace</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/dashboard.html"><span>⚙️</span> Configurações</a>
+            <a href="#"><span>🚪</span> Sair</a>
+        </nav>
+    </div>
+    
+    <!-- Início do conteúdo principal -->
+
+    <div id="nav-bar">
+        <div id="area-logo">
+            <img id="logo" src="/AgroAnalyst-VersaoFinal/src/img/Agroanalisty-1.webp" alt="">
+        </div>
+        <div id="area-navegacao">
+            <a href="/AgroAnalyst-VersaoFinal/index.html">Inicio</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/perfil.html">Meu Perfil</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/quemSomos.html">Sobre nós</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/time.html">Time</a>
+            
+        </div>
+        <div class="login-cadastro">
+            <button id="login">Entrar</button>
+            <a id="cadastro">Cadastro</a>
+            <img id="logout" src="/AgroAnalyst-VersaoFinal/src/img/sair.png" alt="Logout">
+        </div>
+    </div>
+
+    <div class="analise">
+        <!-- Título e explicação -->
+        <div class="titulo-analise">
+            <h2 id="titulo-analise-solo">Análise de Solo Personalizada</h2>
+            <p id="descricao-analise-solo">
+                Obtenha informações detalhadas sobre o solo da sua região e descubra as culturas mais adequadas para o cultivo.
+            </p>
+            <!-- Campo de entrada + botão -->
+            <div class="input-analise">
+                <input id="input-cidade" type="text" placeholder="Digite o nome da cidade ou use sua localização atual">
+                <button id="botao-analisar-solo">Analisar Solo</button>
+            </div>
+        </div>
+        <div class="titulos-principais">    
+            <h1>Caracteristicas Resumidas</h1>
+        </div>
+        <!-- Colunas com os resultados da análise -->
+        <div class="conteudo-analise">
+            
+            <!-- Coluna esquerda: informações sobre o solo -->
+            <div class="coluna-esquerda">
+                <p><strong>Região:</strong> <span id="regiao">Sul</span></p>
+                <p><strong>Estado:</strong> <span id="estado">Rio Grande do Sul</span></p>
+                <p><strong>Área:</strong> <span id="cidade">Porto Alegre</span></p>
+                <p><strong>Tipo de Solo:</strong> <span id="tipo-solo">Argiloso</span></p>
+                <p><strong>Clima Predominante:</strong> <span id="clima">Subtropical</span></p>
+
+                <p id="titulo-caracteristicas"><strong>Características do Solo:</strong></p>
+                <ul id="lista-caracteristicas">
+                    <li>Textura: <span id="textura">Média</span></li>
+                    <li>Drenagem: <span id="drenagem">Moderada</span></li>
+                    <li>PH: <span id="ph">5,8</span></li>
+                    <li>Fertilidade: <span id="fertilidade">Alta</span></li>
+                </ul>
+            </div>
+
+            <div class="separa">
+                <span></span>
+            </div>
+
+            <!-- Coluna direita: culturas recomendadas -->
+            <div class="coluna-direita">
+                <h3 id="titulo-culturas">Culturas Recomendadas</h3>
+                <ul id="lista-culturas">
+                    <li>🌽 Milho</li>
+                    <li>🌱 Soja</li>
+                    <li>🌾 Trigo</li>
+                </ul>
+
+                <!-- Imagem do mapa -->
+                
+            </div>
+        </div> <!-- Fim das colunas -->
+
+        <div class="titulos-principais">
+            <h1>Selecione sua localização</h1>
+        </div>
+
+        <div class="area-mapa">
+            <div id="mapa-interativo"></div>
+        </div>
+
+         <!-- Seção de Análise Detalhada -->
+        <div class="analise-detalhada">
+            
+            <div class="secao-titulo">
+                <h1>Análise Detalhada do Solo</h1>
+                <p>Informações técnicas aprofundadas sobre as características do solo e recomendações científicas de cultivo para sua região</p>
+            </div>
+
+            <!-- Indicador de carregamento -->
+            <div class="loading" id="loadingDetalhes">
+                <div class="spinner"></div>
+                <p>Carregando análise detalhada...</p>
+            </div>
+
+            <!-- Grid de Informações do Solo -->
+            <div class="info-solo-grid" id="infoSoloGrid" style="display: none;">
+                <!-- Cards serão injetados aqui -->
+            </div>
+
+            <!-- Culturas Recomendadas -->
+            <div class="culturas-recomendadas" id="culturasRecomendadas" style="display: none;">
+                <div class="culturas-header">
+                    <span class="icone-header">🌾</span>
+                    <h2>Culturas Recomendadas e Justificativas</h2>
+                </div>
+                <div class="lista-culturas" id="lista-culturas-detalhada">
+                    <!-- Cards de culturas serão injetados aqui -->
+                </div>
+            </div>
+
+            <!-- Informação sobre Método de Busca -->
+            <div class="metodo-busca" id="metodoBusca" style="display: none;">
+                <p><strong>Método de análise:</strong> <span id="metodoTexto">-</span></p>
+            </div>
+        </div> <!-- Fim da Análise Detalhada -->
+
+            <div id="chuva">
+                <h2>Precipitação na região</h2>
+                <p> Abaixo está a média mensal de precipitação (chuva) para a sua região, medida em milímetros (mm).</p>
+                <div class="container-grafico-chuva">
+                    <div id="loading-spinner" class="spinner-container" style="display: none;">
+                        <div class="spinner"></div>
+                    </div>
+                    <canvas id="grafico-chuva"></canvas>
+                    <!--<a href="/AgroAnalyst-VersaoFinal/src/paginas/analise-regiao.html">Busca climática</a>-->
+                </div>
+            </div>
+
+            <!-- Início do rodapé -->
+            <div class="rodape" id="contato">
+                <div class="container-rodape">
+                    <p>&copy; 2025 AgroAnalyst. Todos os direitos reservados.</p>
+                    <p>Contato: <a href="mailto:contato@agroanalyst.com">contato@agroanalyst.com</a></p>
+                </div>
+            </div>
+        
+    </div> 
+    
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- Leaflet Draw -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    
+    <!-- Turf.js -->
+    <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+    
+
+
+
+    <!-- Script Firebase de autenticação -->
+    <script defer type="module" src="/auth/auth.js"></script>
+
+</body>
+</html>

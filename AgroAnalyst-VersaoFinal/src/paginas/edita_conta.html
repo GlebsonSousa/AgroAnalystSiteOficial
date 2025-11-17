@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroAnalyst - Perfil do Usuário</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #F2F0EB 0%, #C7DFB9 0%, #2d5016 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(45, 80, 22, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo::before {
+            content: "🌱";
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8d4a0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            padding: 8px 20px;
+            border: 2px solid #4CAF50;
+            background: transparent;
+            color: #4CAF50;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            padding: 8px 20px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover, .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Main Container */
+        .main-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .profile-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
+        }
+
+        .upload-hint {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .profile-title {
+            font-size: 24px;
+            color: #2d5016;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .profile-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.half {
+            grid-column: span 1;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .form-group.full {
+                grid-column: span 2;
+            }
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d5016;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #4CAF50;
+            background: rgba(255,255,255,1);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .form-input:valid {
+            border-color: #4CAF50;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-select:focus {
+            border-color: #4CAF50;
+            background: rgba(255,255,255,1);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .save-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .save-button:active {
+            transform: translateY(0);
+        }
+
+        /* Success Animation */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/AgroAnalyst-VersaoFinal/index.html">AgroAnalyst</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Perfil</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Análises</a></li>
+                <li><a href="#">Relatórios</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-outline">Ajuda</button>
+                <button class="btn-primary">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <div class="avatar" onclick="triggerFileInput()">
+                        👤
+                        <div class="upload-hint">📷</div>
+                    </div>
+                    <input type="file" id="avatarInput" style="display: none;" accept="image/*" onchange="handleAvatarUpload(event)">
+                </div>
+                <h1 class="profile-title">Perfil do Agricultor</h1>
+                <p class="profile-subtitle">Complete seus dados para uma melhor experiência</p>
+            </div>
+
+            <form id="profileForm" class="form-grid">
+                <div class="form-group full">
+                    <label class="form-label" for="nomeCompleto">Nome Completo *</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-input" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="(11) 99999-9999">
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label" for="endereco">Endereço *</label>
+                    <input type="text" id="endereco" name="endereco" class="form-input" placeholder="Rua, Avenida, número e complemento" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="cidade">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" class="form-input" placeholder="Digite sua cidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="estado">Estado *</label>
+                    <select id="estado" name="estado" class="form-select" required>
+                        <option value="">Selecione o estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" class="form-input" placeholder="00000-000" maxlength="9">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="tipoProdutor">Tipo de Produtor</label>
+                    <select id="tipoProdutor" name="tipoProdutor" class="form-select">
+                        <option value="">Selecione o tipo</option>
+                        <option value="pequeno">Pequeno Produtor</option>
+                        <option value="medio">Médio Produtor</option>
+                        <option value="grande">Grande Produtor</option>
+                        <option value="cooperativa">Cooperativa</option>
+                        <option value="empresa">Empresa Rural</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="save-button">Salvar Perfil</button>
+            </form>
+
+            <div id="successMessage" class="success-message">
+                ✅ Perfil salvo com sucesso!
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Formatação de CEP
+        document.getElementById('cep').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) {
+                value = value.substring(0, 5) + '-' + value.substring(5, 8);
+            }
+            e.target.value = value;
+        });
+
+        // Formatação de telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = '(' + value;
+                } else if (value.length <= 6) {
+                    value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+                } else if (value.length <= 10) {
+                    value = '(' + value.substring(0, 2) + ') ' + value.substring(2, 6) + '-' + value.substring(6);
+                } else {
+                    value = '(' + value.substring(0, 2) + ') ' + value.substring(2, 7) + '-' + value.substring(7, 11);
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Consulta CEP
+        document.getElementById('cep').addEventListener('blur', function(e) {
+            const cep = e.target.value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            document.getElementById('endereco').value = data.logradouro;
+                            document.getElementById('cidade').value = data.localidade;
+                            document.getElementById('estado').value = data.uf;
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Erro ao consultar CEP:', error);
+                    });
+            }
+        });
+
+        // Upload de avatar
+        function triggerFileInput() {
+            document.getElementById('avatarInput').click();
+        }
+
+        function handleAvatarUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const avatar = document.querySelector('.avatar');
+                    avatar.style.backgroundImage = `url(${e.target.result})`;
+                    avatar.style.backgroundSize = 'cover';
+                    avatar.style.backgroundPosition = 'center';
+                    avatar.innerHTML = '<div class="upload-hint">📷</div>';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Submit do formulário
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular salvamento
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Dados do perfil:', data);
+            
+            // Mostrar mensagem de sucesso
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Esconder mensagem após 3 segundos
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Validação em tempo real
+        const inputs = document.querySelectorAll('.form-input, .form-select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.checkValidity()) {
+                    this.style.borderColor = '#4CAF50';
+                } else {
+                    this.style.borderColor = '#f44336';
+                }
+            });
+        });
+
+        // Animação de entrada
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.profile-container');
+            container.style.animation = 'slideIn 0.5s ease';
+        });
+    </script>
+</body>
+</html>

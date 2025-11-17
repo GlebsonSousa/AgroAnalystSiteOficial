@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/time.css">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/navbar.css">
+
+    <script src="/AgroAnalyst-VersaoFinal/src/js/volta-para-home.js"></script>
+    <script src="/AgroAnalyst-VersaoFinal/src/js/barra-lateral.js" defer></script>
+    
+    <title>Nosso Time</title>
+</head>
+<body>
+
+    <div class="barra-lateral">
+        <!-- Botão de menu -->
+        <button class="menu-btn" id="menuBtn">
+        <div class="menu-icon"></div>
+        </button>
+
+        <!-- Sobreposição -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Menu lateral -->
+        <nav class="sidebar" id="sidebar">
+            <a href="/AgroAnalyst-VersaoFinal/index.html"><span>🏠</span> Início</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/relatorio.html"><span>📄</span> Relatórios</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/marketplace.html"><span>📊</span> Marketplace</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/dashboard.html"><span>⚙️</span> Configurações</a>
+            <a href="#"><span>🚪</span> Sair</a>
+        </nav>
+    </div>
+
+
+    <div id="nav-bar">
+        <div id="area-logo">
+            <img id="logo" src="/AgroAnalyst-VersaoFinal/src/img/Agroanalisty-1.webp" alt="">
+        </div>
+        <div id="area-navegacao">
+            <a href="/AgroAnalyst-VersaoFinal/index.html">Inicio</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/perfil.html">Meu Perfil</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/quemSomos.html">Sobre nós</a>
+            <a href="">Time</a>
+            
+        </div>
+        <div class="login-cadastro">
+            <button id="login">Entrar</button>
+            <a id="cadastro">Cadastro</a>
+            <img id="logout" src="/AgroAnalyst-VersaoFinal/src/img/sair.png" alt="Logout">
+        </div>
+    </div>
+    <div class="principal-time">
+
+        <div class="titulo">
+            <h1>Conheça nosso time</h1>
+        </div>
+
+        <div class="conteudo1">
+            <div class="integrantes">
+                <div class="area-esquerda">
+                    <img src="/AgroAnalyst-VersaoFinal/src/img/andre.webp" alt="img-andré">
+                </div>
+                <div class="area-direita">
+                    <h1>ANDRÉ DE ABREU ROCHA</h1>
+                    <p>Com experiência no mercado, André possui um extenso currículo no nicho da agrotecnologia, usando sua criatividade e resiliência para manter a alta produtividade, além de ser uma das peças-chave para a resolução de problemas e busca de novas ferramentas para a melhoria dos procedimentos.</p>
+                   <!--<p>Linkdnl: <a href="https://br.linkedin.com/in/andr%C3%A9-de-abreu-rocha-897709330">André de Abreu Rocha</a></p>-->
+                </div>
+            </div>
+
+            <div class="integrantes">
+                <div class="area-esquerda">
+                    <img src="/AgroAnalyst-VersaoFinal/src/img/breno.webp" alt="img-andré">
+                </div>
+                <div class="area-direita">
+                    <h1>BRENO MARIO CORREA</h1>
+                    <p>Breno é o principal designer do site da AgroAnalyst. Buscando manter uma linha tênue entre a simplicidade e a sofisticação, todas as páginas foram pensadas e projetadas para proporcionar conforto máximo ao leitor, além de manter a temática agrotecnológica.</p>
+                </div>
+            </div>
+        </div> 
+        <div class="conteudo2">
+            <div class="integrantes">
+                <div class="area-esquerda">
+                    <img src="/AgroAnalyst-VersaoFinal/src/img/glebson.webp" alt="img-andré">
+                </div>
+                <div class="area-direita">
+                    <h1>GLEBSON SOUSA DE ALMEIDA</h1>
+                    <p>Consistência, simplicidade e desempenho estão entre as peças-chave para colocar um código em prática. Por trás do front-end, Glebson garante que esses elementos estejam presentes no código-fonte da AgroAnalyst, transmitindo praticidade e confiabilidade através de cada linha da programação.</p>
+                </div>
+            </div>
+            <div class="integrantes">
+                <div class="area-esquerda">
+                    <img src="/AgroAnalyst-VersaoFinal/src/img/gaby.webp" alt="img-andré">
+                </div>
+                <div class="area-direita">
+                    
+                    <h1>GABRIELE PEREIRA DA CRUZ ARANTES</h1>
+                    <p>Imaginativa, sorridente e atenciosa, Gabriele está sempre disposta a dar a AgroAnalyst uma pitada de alegria e felicidade, garantindo o bem-estar e criatividade fértil da nossa equipe.
+                        Sorrisos a bordo</p>
+                </div>
+            </div>
+        </div>
+        <div class="conteudo2">
+            <div class="integrantes">
+                <div class="area-esquerda">
+                    <img src="/AgroAnalyst-VersaoFinal/src/img/tulio.webp" alt="img-andré">
+                </div>
+            
+                <div class="area-direita">
+                    <h1>TÚLIO DE SOUSA MEIRA</h1>
+                    <p>Em um mundo corporativo onde a demanda aumenta e os deadlines diminuem, Túlio garante o controle dos prazos e o cumprimento das metas estabelecidas da AgroAnalyst, sempre com foco e determinação significativos.</p>
+                </div> 
+            </div>
+        </div>   
+    </div>
+    
+    <!-- Script Firebase de autenticação -->
+    <script defer type="module" src="/auth/auth.js"></script>
+
+
+
+</body>
+</html>

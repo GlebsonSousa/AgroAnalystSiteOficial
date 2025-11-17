@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/style_cadastro.css">
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/navbar.css">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+    
+    <script src="/AgroAnalyst-VersaoFinal/src/js/cadastro.js"></script>
+    <script defer src="/AgroAnalyst-VersaoFinal/src/js/nav-bar.js"></script>
+</head>
+<body>
+
+    <div id="nav-bar">
+        <div id="area-logo">
+            <img id="logo" src="/AgroAnalyst-VersaoFinal/src/img/Agroanalisty-1.webp" alt="">
+        </div>
+        <div id="area-navegacao">
+            <a href="/AgroAnalyst-VersaoFinal/index.html">Inicio</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/quemSomos.html">Sobre nós</a>
+            <a href="/AgroAnalyst-VersaoFinal/src/paginas/time.html">Time</a>
+        </div>
+    </div>
+
+
+    <div class="cadastro-container">
+        <!-- Lado esquerdo - imagem -->
+        <div class="imagem-lateral">
+
+        </div>
+
+        <!-- Lado direito - formulário -->
+        <div class="formulario">
+            <h1>Cadastro De Usuário</h1>
+            <form id="formCadastro">
+
+                <legend id="text">Nome de usuário</legend>
+                <input id="nome_usuario" type="text" placeholder="Insira seu nome de usuário" required>
+                <span class="clear-btn">×</span>
+
+                <legend id="text">E-mail</legend>
+                <input id="email_usuario" type="email" placeholder="Insira seu endereço eletrônico (@gmail.com, @outlook.com, ...)" required>
+                <span class="clear-btn">×</span>
+                
+                <legend id="text">Senha</legend>
+                <input id="senha" name="senha" type="password" placeholder="Insira sua senha aqui..." maxlength="100" required>
+
+                <legend id="text">Confirmar Senha</legend>
+                <input id="confirma_senha" name="confirmar_senha" type="password" placeholder="Insira sua senha aqui..." maxlength="100" required>
+
+                <div class="botoes">
+                    <button id="cadastrar" type="submit" class="btn-cadastrar">CADASTRAR</button>
+                    <button id="voltarAoLogin" type="button" class="btn-login">RETORNAR AO LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        © AgroAnalyst 2025. Todos os Direitos Reservados.
+    </footer>
+
+    <!-- JavaScript para máscaras, validação e botões X -->
+    <script>
+
+        
+    </script>
+</body>
+</html>
+

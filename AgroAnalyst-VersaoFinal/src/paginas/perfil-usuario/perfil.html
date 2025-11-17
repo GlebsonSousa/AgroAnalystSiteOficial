@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="icon" href="/AgroAnalyst-VersaoFinal/src/img/icon-agroanalyst.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/AgroAnalyst-VersaoFinal/src/style/style_edita_conta.css">
+    
+    <script defer src="/AgroAnalyst-VersaoFinal/src/js/edita_conta.js"></script>
+    <title>AgroAnalyst - Perfil do Usuário</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/AgroAnalyst-VersaoFinal/index.html">AgroAnalyst</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Perfil</a></li>
+                <li><a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/dashboard.html">Dashboard</a></li>
+                <li><a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/analise.html">Análises</a></li>
+                <li><a href="/AgroAnalyst-VersaoFinal/src/paginas/perfil-usuario/relatorio.html">Relatórios</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-outline">Ajuda</button>
+                <button class="btn-primary">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <div class="avatar" onclick="triggerFileInput()">
+                        👤
+                        <div class="upload-hint">📷</div>
+                    </div>
+                    <input type="file" id="avatarInput" style="display: none;" accept="image/*" onchange="handleAvatarUpload(event)">
+                </div>
+                <h1 class="profile-title">Perfil do Agricultor</h1>
+                <p class="profile-subtitle">Complete seus dados para uma melhor experiência</p>
+            </div>
+
+            <form id="profileForm" class="form-grid">
+                <div class="form-group full">
+                    <label class="form-label" for="nomeCompleto">Nome Completo *</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-input" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="(11) 99999-9999">
+                </div>
+
+                <div class="form-group full">
+                    <label class="form-label" for="endereco">Endereço *</label>
+                    <input type="text" id="endereco" name="endereco" class="form-input" placeholder="Rua, Avenida, número e complemento" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="cidade">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" class="form-input" placeholder="Digite sua cidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="estado">Estado *</label>
+                    <select id="estado" name="estado" class="form-select" required>
+                        <option value="">Selecione o estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" class="form-input" placeholder="00000-000" maxlength="9">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="tipoProdutor">Tipo de Produtor</label>
+                    <select id="tipoProdutor" name="tipoProdutor" class="form-select">
+                        <option value="">Selecione o tipo</option>
+                        <option value="pequeno">Pequeno Produtor</option>
+                        <option value="medio">Médio Produtor</option>
+                        <option value="grande">Grande Produtor</option>
+                        <option value="cooperativa">Cooperativa</option>
+                        <option value="empresa">Empresa Rural</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="save-button">Salvar Perfil</button>
+            </form>
+
+            <div id="successMessage" class="success-message">
+                ✅ Perfil salvo com sucesso!
+            </div>
+        </div>
+    </main>
+</body>
+</html>

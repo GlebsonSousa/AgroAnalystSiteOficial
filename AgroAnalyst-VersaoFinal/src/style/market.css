@@ -1,0 +1,338 @@
+/*Fonte do titulo*/
+@font-face {
+    font-family: Barrio;
+    src: url(../fonts/font-home/BreeSerif-Regular.ttf)
+}   
+
+/*Fonte dos textos de navegação*/
+@font-face {
+    font-family: seasons;
+    src: url(../fonts/font-home/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)
+} 
+
+@font-face {
+    font-family: marry;
+    src: url(/src/fonts/font-home/Merriweather-VariableFont_opsz\,wdth\,wght.ttf)
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    background-color: #F2F0EB;
+}
+
+
+
+/*Define as propriedades da nav-bar*/
+#nav-bar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+    min-width: 700px;
+    max-width: 1200px;
+    background-color: white;
+    margin-top: 1rem;
+    border-radius: 35px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+/*Espaço especifico da logo*/
+#area-logo {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    max-width: 400px;
+    height: 100%;
+    overflow: hidden;
+}
+
+#area-logo img{
+    max-height: 150%;
+    width: fit-content;
+    transform: scale(160%);
+}
+
+/*Area para edição da area de navegação da nav-bar*/
+#area-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 70%; 
+    height: 100%;   
+}
+
+#area-navegacao a{
+    font-family: Barrio;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+    transition: ease-in-out 0.3s;
+    
+}
+
+#area-navegacao a:hover {
+    color: #056F33;
+
+}
+
+/* Estilizando o contêiner */
+.login-cadastro {
+    display: flex;
+    gap: 2rem;
+    width: 20%; /* Definindo a largura do contêiner como 20% */
+    height: auto;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+/* Estilizando o botão de login */
+#login {
+    background-color: green; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none; /* Removendo borda */
+    padding: 10px 50px;
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Mudando o cursor para indicar que é clicável */
+    border-radius: 25px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor */
+    font-family: Barrio;
+}
+
+/* Estilizando o botão de login quando o mouse passar sobre ele */
+#login:hover {
+    background-color: darkgreen; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+
+/* Estilizando o botão de login -- GOOGLE */
+#loginn {
+    background-color: green; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none; /* Removendo borda */
+    padding: 10px 50px;
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Mudando o cursor para indicar que é clicável */
+    border-radius: 25px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor */
+    font-family: Barrio;
+}
+
+/* Estilizando o botão de login quando o mouse passar sobre ele */
+#loginn:hover {
+    background-color: darkgreen; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+
+
+
+/* Estilizando o link de cadastro */
+#cadastro {
+    display: block; /* Fazendo o link ser exibido em um bloco (abaixo do botão) */
+    color: #515150; /* Cor do texto preto */
+    text-decoration: none; /* Removendo o sublinhado do link */
+    font-size: 20px; /* Tamanho da fonte */
+    font-family: Barrio;
+}
+
+/* Alterando a cor do link quando o mouse passa por cima */
+#cadastro:hover {
+    color: green; /* Mudando a cor para verde quando o mouse passa por cima */
+    cursor: pointer;
+}
+
+/*Fim da esilização da nav-bar*/
+
+/*----------------- barra lateral----------------------------*/
+:root {
+      --verde-claro: #056F33;
+      --verde-pastel: #FFFFFF;
+      --verde-escuro: #034C1B;
+      --off-white: #F8F8F4;
+      --texto: #2E3D32;
+      --sombra: rgba(0, 0, 0, 0.1);
+      --overlay: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+
+    /* 🍔 Botão do menu */
+    .menu-btn {
+      position: fixed;
+      top: 25px;
+      right: 280px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--verde-claro);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px var(--sombra);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: var(--verde-escuro);
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      position: relative;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon::before {
+      top: -8px;
+    }
+
+    .menu-icon::after {
+      top: 8px;
+    }
+
+    /* Animação do ícone */
+    .menu-btn.active .menu-icon {
+      background: transparent;
+    }
+
+    .menu-btn.active .menu-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .menu-btn.active .menu-icon::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* 🧭 Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 1200px;
+      width: 250px;
+      height: 100%;
+      background-color: var(--verde-pastel);
+      box-shadow: 2px 0 10px var(--sombra);
+      transition: 0.3s ease;
+      padding-top: 80px;
+      z-index: 1000;
+      opacity: 0;
+    }
+
+    .sidebar.open {
+      right: 0;
+      opacity: 1;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      color: var(--texto);
+      font-size: 17px;
+      transition: background 0.2s, border-left 0.2s;
+      border-left: 4px solid transparent;
+      font-family: Barrio;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--verde-claro);
+      border-left: 4px solid var(--verde-escuro);
+    }
+
+    .sidebar a span {
+      margin-left: 10px;
+    }
+
+    /* 🔳 Efeito de sobreposição */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 900;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 🧩 Conteúdo principal */
+    .content {
+      padding: 60px 30px;
+      transition: all 0.4s ease;
+    }
+
+    /* ✨ Efeito suave ao abrir o menu */
+    .blurred {
+      filter: blur(3px);
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+
+    header {
+      background-color: var(--verde-claro);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    main p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+/*--------------------------------------------------------------------------*/
+
+
+/*FIM DA ESTILIZAÇÃO DA HOME*/

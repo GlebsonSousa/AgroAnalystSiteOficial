@@ -1,0 +1,252 @@
+/*Fonte do titulo*/
+@font-face {
+    font-family: Barrio;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/BreeSerif-Regular.ttf)
+}   
+
+/*Fonte dos textos de navegação*/
+@font-face {
+    font-family: seasons;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)
+} 
+
+@font-face {
+    font-family: marry;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Merriweather-VariableFont_opsz\,wdth\,wght.ttf)
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(/AgroAnalyst-VersaoFinal/src/fonts/font-home/Poppins/Poppins-Light.ttf)
+}
+
+body {
+    display: flex;
+    align-items:center ;
+    flex-direction: column;
+    background-color: #C8E0BA ;
+    width: auto;
+    height: auto;
+}
+
+/* Container principal */
+.cadastro-container {
+    margin-top: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    height: 80vh;
+    border-radius: 10px;
+    min-width: 700px;
+    min-height: 500px;
+}
+
+/* Lado esquerdo */
+.imagem-lateral {
+    background-image: url('/AgroAnalyst-VersaoFinal/src/img/cadastro-img.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    background-color: #F2F0EB;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+ .formulario h1 {
+    margin-top: 10%;
+    font-size: 45px;
+    font-family: Poppins;
+ }
+
+
+
+#formCadastro {
+    margin-top: 5%;
+    display: flex;
+    height: 90%;
+    width: 80%;
+    font-family: poppins;
+}
+
+#formCadastro :focus {
+    background-color: #60806d; 
+}
+
+
+#formCadastro input {
+    background: #0c682e;
+}
+
+.formulario input {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    
+}
+
+.formulario input::placeholder {
+    color: #c8e6c9;
+}
+
+.botoes {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-cadastrar {
+    background: #1b5e20;
+}
+
+.btn-cadastrar:hover {
+    background: #145a18;
+}
+
+.btn-login {
+    background: #4e342e;
+}
+
+.btn-login:hover {
+    background: #3e2723;
+}
+
+
+/* Rodapé */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #333;
+    background: #d6ecd4;
+    padding: 8px 0;
+    border-top: 1px solid #ccc;
+}
+
+/* Rodapé com imagem */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    background: #d6ecd4;
+    padding: 8px 0;
+    border-top: 1px solid #ccc;
+}
+
+
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.formulario input {
+    background: #0d652d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.formulario input::placeholder {
+    color: #c8e6c9;
+}
+
+
+/* Container do input + botão X */
+.input-clearable {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.input-clearable input {
+    width: 100%;
+    padding-right: 30px; /* espaço para o X */
+}
+
+.clear-btn {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    user-select: none;
+}
+
+.clear-btn:hover {
+    opacity: 1;
+}
+
+
+/* Estilo para o container com botão X */
+.input-clearable {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-clearable input {
+    width: 100%;
+    padding-right: 30px; /* espaço para o X */
+}
+
+.clear-btn {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    user-select: none;
+}
+
+.clear-btn:hover {
+    opacity: 1;
+}

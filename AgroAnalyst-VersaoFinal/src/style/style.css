@@ -1,0 +1,664 @@
+/*Fonte do titulo*/
+@font-face {
+    font-family: Barrio;
+    src: url(../fonts/font-home/BreeSerif-Regular.ttf)
+}   
+
+/*Fonte dos textos de navegação*/
+@font-face {
+    font-family: seasons;
+    src: url(../fonts/font-home/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf)
+} 
+
+@font-face {
+    font-family: marry;
+    src: url(/src/fonts/font-home/Merriweather-VariableFont_opsz\,wdth\,wght.ttf)
+}
+
+@font-face {
+    font-family: Questrial;
+    src:url(/src/fonts/font-home/Questrial-Regular.ttf)
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(/src/fonts/font-home/Poppins/Poppins-Light.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    background-color: #F2F0EB;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/*Define as propriedades gerais da página*/
+.home {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+    width: 100vw;
+    max-width: 1200px;
+    min-width: 700px;
+    background-color: #F2F0EB;
+    z-index: 0;
+}
+
+/*Define as propriedades da nav-bar*/
+#nav-bar {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+    min-width: 700px;
+    max-width: 1200px;
+    background-color: white;
+    margin-top: 1rem;
+    border-radius: 35px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/*Espaço especifico da logo*/
+#area-logo {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    max-width: 400px;
+    height: 100%;
+    overflow: hidden;
+}
+
+#area-logo img{
+    max-height: 100%;
+    width: fit-content;
+    transform: scale(160%);
+}
+
+/*Area para edição da area de navegação da nav-bar*/
+#area-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 70%; 
+    height: 100%;   
+}
+
+#area-navegacao a{
+    font-family: Barrio;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+    transition: ease-in-out 0.3s;
+    
+}
+
+#area-navegacao a:hover {
+    color: #056F33;
+}
+
+
+/* Estilizando o contêiner */
+.login-cadastro {
+    display: flex;
+    gap: 2rem;
+    width: 20%; 
+    height: auto;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+/* Estilizando o botão de login */
+#login {
+    background-color: green; 
+    color: white; 
+    border: none; 
+    padding: 10px 50px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 25px; 
+    transition: background-color 0.3s ease; 
+}
+
+/* Estilizando o botão de login quando o mouse passar sobre ele */
+#login:hover {
+    background-color: darkgreen; 
+}
+
+
+
+
+
+/* Estilizando o botão de login -- GOOGLE */
+#loginn {
+    background-color: green; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none; /* Removendo borda */
+    padding: 10px 50px;
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Mudando o cursor para indicar que é clicável */
+    border-radius: 25px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor */
+    font-family: Barrio;
+}
+
+/* Estilizando o botão de login quando o mouse passar sobre ele */
+#loginn:hover {
+    background-color: darkgreen; /* Cor de fundo mais escura quando o mouse passa por cima */
+}
+
+
+
+
+
+
+/* Estilizando o link de cadastro */
+#cadastro {
+    display: block; 
+    color: #515150; 
+    text-decoration: none; 
+    font-size: 20px; 
+    font-family: Barrio;
+}
+
+
+#cadastro:hover {
+    color: green; 
+    cursor: pointer;
+}
+
+/*esta div é a div pai da parte principal da pagina home*/
+.conteudo {
+    display: flex;
+    height: calc(100% - 70px);
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*Tudo que esta dentro da div area esquerda*/
+.area-esquerda {
+    display: flex;
+    margin-left: 2rem;
+    padding-top: 10%;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+}
+
+.informacoes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#h1-padrao {
+    font-family: Barrio;
+    max-width: 95%;
+    font-size:70px;
+    font-weight: 400;
+}
+
+#h1-padrao span {
+    font-family: Barrio;
+}
+
+.barra-separadora {
+    display: flex;
+}
+
+#barra-separar {
+    display: block;
+    width: 200px;
+    height: 3px;
+    border-radius: 6px;
+    background-color: #FFD114;
+    margin-top: 2rem;
+}
+
+#texto-verde{
+    color: #034C1B;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.area-esquerda p {
+    padding-top: 2rem ;
+    font-family: barrio;
+    font-size: 18px;
+    color: #515150;
+}
+
+
+/*Div que cuida da area em que o botao Analisar solo ficará*/
+.area-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20%;
+    width: 100%;
+    height: 100%;
+}
+
+.area-btn button {
+    background-color: #056F33;
+    color: white;
+    width: 200px;
+    height: 55px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s;
+}   
+
+.area-btn button:hover {
+    background-color: #034C1B;
+}
+
+.area-btn button:active {
+    transform: scale(96%);
+}
+
+.area-direita {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: start;
+    padding-left: 10%;
+    height: 100%;
+    width: 50%;
+}
+
+#img-milho{
+    display: flex;
+    height: 28rem;
+    z-index: 1;
+}
+
+#img-dinheiro{
+    height: 20rem;
+    width: fit-content;
+    position: absolute;
+    z-index: 0;
+    left: 42%;
+}
+
+.area-direita img {
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+.area-direita img:hover {
+    transform: scale(105%);
+}
+
+/*APARTIR DAQUI ESTA A ESTILIZAÇÃO DO MONITORAMENTO*/
+
+.home-monitoramento {
+    display: flex;
+    margin-top: 4rem;
+
+}
+
+.monitoramento-esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: auto;
+    margin-top: 8rem;
+
+}
+
+.monitoramento-direita {
+    display: flex;
+    align-items: center;
+    width: 40%;
+} 
+
+.monitoramento-titulo-subtitulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+
+}
+
+.monitoramento-esquerda h2 {
+    font-family: Barrio;
+    max-width: 95%;
+    font-size: 45px;
+    font-weight: 400;
+}
+
+.monitoramento-esquerda p {
+    font-family: Barrio;
+    max-width: 95%;
+    font-size: 16px;
+    font-weight: 400;
+    color: #515150;
+}
+
+.monitoramento-sat-receita{
+    display: flex;
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.area-img-sat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.topo-sat {
+    display: flex;
+    font-family: barrio;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.monitoramento-porcentagem-sat {
+    font-size: 16px;
+    font-family: barrio;
+    font-weight: 300;
+}
+
+span {
+    font-family: barrio;
+    font-weight: 300;
+}
+
+
+.monitoramento-porcentagem-rec p{
+    color: black;
+    font-size: 25px;
+}
+
+.monitoramento-porcentagem-rec span{
+   font-family: barrio;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#porcentagem {
+    color: black;
+    font-size: 25px;
+}
+
+
+.area-img-sat img {
+    width: 5.5rem;
+}
+
+.area-img-rec {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 11rem;
+}
+
+.topo-rec {
+    display: flex;
+}
+
+.topo-rec span {
+    font-family: barrio;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.area-img-rec img {
+    width: 5rem;
+} 
+
+.monitoramento-direita {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
+#img-drone-colheita {
+    height: 70%;
+    width: auto;
+    max-width: 100%;
+    border-radius: 30px;
+}
+
+
+/*Area de edição para adequação a dispositivos com diferentes telas*/
+@media(max-width: 1000px) {
+    #area-logo img{
+        margin-left: 2rem;
+        transform: scale(130%);
+        margin-bottom: 3.5%;
+    }
+
+    #h1-padrao {
+        font-family: Barrio;
+        max-width: 90%;
+        font-size: 45px;
+        font-weight: 400;
+    }
+
+    #barra-separar {
+        display: block;
+        width: 200px;
+        height: 2px;
+        border-radius: 6px;
+        background-color: #FFD114;
+        margin-top: 2rem;
+    }
+
+    #img-milho{
+        height: 15rem;
+    }
+    
+    #img-dinheiro{
+        height: 10rem;
+    }
+
+}
+
+
+
+/*----------------- barra lateral----------------------------*/
+:root {
+      --verde-claro: #056F33;
+      --verde-pastel: #FFFFFF;
+      --verde-escuro: #034C1B;
+      --off-white: #F8F8F4;
+      --texto: #2E3D32;
+      --sombra: rgba(0, 0, 0, 0.1);
+      --overlay: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+
+    /* 🍔 Botão do menu */
+    .menu-btn {
+      position: fixed;
+      top: 25px;
+      right: 280px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--verde-claro);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px var(--sombra);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: var(--verde-escuro);
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      position: relative;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon::before {
+      top: -8px;
+    }
+
+    .menu-icon::after {
+      top: 8px;
+    }
+
+    /* Animação do ícone */
+    .menu-btn.active .menu-icon {
+      background: transparent;
+    }
+
+    .menu-btn.active .menu-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .menu-btn.active .menu-icon::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* 🧭 Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 1200px;
+      width: 250px;
+      height: 100%;
+      background-color: var(--verde-pastel);
+      box-shadow: 2px 0 10px var(--sombra);
+      transition: 0.3s ease;
+      padding-top: 80px;
+      z-index: 1000;
+      opacity: 0;
+    }
+
+    .sidebar.open {
+      right: 0;
+      opacity: 1;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      color: var(--texto);
+      font-size: 17px;
+      transition: background 0.2s, border-left 0.2s;
+      border-left: 4px solid transparent;
+      font-family: Barrio;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--verde-claro);
+      border-left: 4px solid var(--verde-escuro);
+    }
+
+    .sidebar a span {
+      margin-left: 10px;
+    }
+
+    /* 🔳 Efeito de sobreposição */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--overlay);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+        z-index: 900;
+    }
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* 🧩 Conteúdo principal */
+    .content {
+      padding: 60px 30px;
+      transition: all 0.4s ease;
+    }
+
+    /* ✨ Efeito suave ao abrir o menu */
+    .blurred {
+      filter: blur(3px);
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+
+    header {
+      background-color: var(--verde-claro);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    main p {
+        
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+/*--------------------------------------------------------------------------*/
+
+
+/*FIM DA ESTILIZAÇÃO DA HOME*/
+

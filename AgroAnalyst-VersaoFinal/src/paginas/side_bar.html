@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Lateral - Estilo Pastel</title>
+  <style>
+    :root {
+      --verde-claro: #A8D5BA;
+      --verde-pastel: #CFE8CC;
+      --verde-escuro: #7BB992;
+      --off-white: #F8F8F4;
+      --texto: #2E3D32;
+      --sombra: rgba(0, 0, 0, 0.1);
+      --overlay: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--off-white);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    /* 🍔 Botão do menu */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--verde-claro);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px var(--sombra);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      background-color: var(--verde-escuro);
+      transform: scale(1.05);
+    }
+
+    .menu-icon {
+      position: relative;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 26px;
+      height: 2.5px;
+      background-color: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon::before {
+      top: -8px;
+    }
+
+    .menu-icon::after {
+      top: 8px;
+    }
+
+    /* Animação do ícone */
+    .menu-btn.active .menu-icon {
+      background: transparent;
+    }
+
+    .menu-btn.active .menu-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .menu-btn.active .menu-icon::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* 🧭 Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100%;
+      background-color: var(--verde-pastel);
+      box-shadow: 2px 0 10px var(--sombra);
+      transition: 0.3s ease;
+      padding-top: 80px;
+      z-index: 1000;
+      opacity: 0;
+    }
+
+    .sidebar.open {
+      left: 0;
+      opacity: 1;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 14px 25px;
+      text-decoration: none;
+      color: var(--texto);
+      font-size: 17px;
+      transition: background 0.2s, border-left 0.2s;
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--verde-claro);
+      border-left: 4px solid var(--verde-escuro);
+    }
+
+    .sidebar a span {
+      margin-left: 10px;
+    }
+
+    /* 🔳 Efeito de sobreposição */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      z-index: 900;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 🧩 Conteúdo principal */
+    .content {
+      padding: 60px 30px;
+      transition: all 0.4s ease;
+    }
+
+    /* ✨ Efeito suave ao abrir o menu */
+    .blurred {
+      filter: blur(3px);
+      opacity: 0.6;
+      transform: scale(0.98);
+    }
+
+    header {
+      background-color: var(--verde-claro);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--sombra);
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    main p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="barra-lateral">
+    <!-- Botão de menu -->
+    <button class="menu-btn" id="menuBtn">
+      <div class="menu-icon"></div>
+    </button>
+
+    <!-- Sobreposição -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menu lateral -->
+    <nav class="sidebar" id="sidebar">
+      <a href="#"><span>🏠</span> Início</a>
+      <a href="#"><span>📄</span> Sobre o Projeto</a>
+      <a href="#"><span>📊</span> Relatórios</a>
+      <a href="#"><span>⚙️</span> Configurações</a>
+      <a href="#"><span>🚪</span> Sair</a>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <div class="content" id="content">
+      <header>
+        <h1>Side Bar 🌿</h1>
+      </header>
+
+      <main>
+        <p>
+          Quem tiver lendo isso aqui, vê se vai dar pra usar.
+        </p>
+      </main>
+    </div>
+  </div>
+  <!-- Script -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const content = document.getElementById('content');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+      content.classList.toggle('blurred');
+    });
+
+    overlay.addEventListener('click', () => {
+      menuBtn.classList.remove('active');
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+      content.classList.remove('blurred');
+    });
+  </script>
+
+</body>
+</html>
