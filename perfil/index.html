@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroAnalyst — Painel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="perfil">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <h3 class="perfil-nome">Anne Williams</h3>
+        <span class="perfil-cargo">Produtor Rural</span>
+      </div>
+
+      <nav class="menu">
+        <button class="menu-item" data-pagina="frota">
+          <span class="icone">🚜</span><span>Frota</span>
+        </button>
+        <button class="menu-item ativo" data-pagina="imagens">
+          <span class="icone">🛰️</span><span>Análise de Imagens</span>
+        </button>
+        <button class="menu-item" data-pagina="graos">
+          <span class="icone">🌾</span><span>Preço de Grãos</span>
+        </button>
+        <button class="menu-item" data-pagina="financeiro">
+          <span class="icone">💰</span><span>Painel Financeiro</span>
+        </button>
+      </nav>
+
+      <div class="menu-rodape">
+        <button class="menu-item"><span class="icone">⚙️</span><span>Configurações</span></button>
+        <button class="menu-item"><span class="icone">🚪</span><span>Sair</span></button>
+      </div>
+    </aside>
+
+    <!-- ============ CONTEÚDO ============ -->
+    <main class="conteudo">
+
+      <!-- Barra superior -->
+      <header class="topo">
+        <div class="busca">
+          <span class="lupa">🔍</span>
+          <input type="text" placeholder="Pesquisar aqui..." />
+        </div>
+        <div class="acoes-topo">
+          <button class="acao-icone">❤️</button>
+          <button class="acao-icone">🔔<span class="badge"></span></button>
+          <button class="acao-icone">☰</button>
+        </div>
+      </header>
+
+      <!-- =================================================== -->
+      <!-- PÁGINA 1: FROTA -->
+      <!-- =================================================== -->
+      <section class="pagina" id="pagina-frota">
+        <div class="cabecalho-pagina">
+          <div>
+            <h1 class="titulo-pagina">Controle de Frota</h1>
+            <p class="texto-muted">Visão geral, status operacional e cadastro de máquinas.</p>
+          </div>
+          <button class="botao-primario" id="abrir-modal-veiculo">+ Adicionar Veículo</button>
+        </div>
+
+        <div class="grade-tres">
+          <div class="card card-indicador">
+            <div class="indicador-info">
+              <span class="rotulo">EM OPERAÇÃO</span>
+              <h2 id="kpi-operacao">0%</h2>
+              <p class="legenda">Máquinas ativas hoje</p>
+            </div>
+            <canvas class="donut" id="donut-operacao" data-cor="#2E7D32"></canvas>
+          </div>
+          <div class="card card-indicador">
+            <div class="indicador-info">
+              <span class="rotulo">EFICIÊNCIA</span>
+              <h2>75%</h2>
+              <p class="legenda">Consumo médio da frota</p>
+              <div class="barra-progresso"><div style="width:75%"></div></div>
+              <small>Meta mensal: 80%</small>
+            </div>
+            <canvas class="donut" data-valor="75" data-cor="#1565C0"></canvas>
+          </div>
+          <div class="card card-indicador">
+            <div class="indicador-info">
+              <span class="rotulo">MANUTENÇÃO</span>
+              <h2 id="kpi-manutencao">0%</h2>
+              <p class="legenda">Preventivas em dia</p>
+            </div>
+            <canvas class="donut" id="donut-manutencao" data-cor="#EF6C00"></canvas>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:20px">
+          <div class="cabecalho-card">
+            <h3 class="titulo-card">Veículos Cadastrados</h3>
+            <div class="filtros">
+              <select id="filtro-frota-status">
+                <option value="">Todos os status</option>
+                <option value="Operação">Em operação</option>
+                <option value="Manutenção">Em manutenção</option>
+                <option value="Parado">Parado</option>
+              </select>
+            </div>
+          </div>
+          <div class="tabela-wrapper">
+            <table class="tabela">
+              <thead>
+                <tr>
+                  <th>Placa</th>
+                  <th>Modelo</th>
+                  <th>Tipo</th>
+                  <th>Ano</th>
+                  <th>Horas / Km</th>
+                  <th>Status</th>
+                  <th>Última manutenção</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-veiculos"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grade-dois">
+          <div class="card">
+            <h3 class="titulo-card">Status por Categoria</h3>
+            <div class="metricas">
+              <div class="metrica">
+                <span class="metrica-rotulo">TRATORES</span>
+                <strong id="cat-tratores">0</strong>
+                <small>unidades</small>
+              </div>
+              <div class="metrica">
+                <span class="metrica-rotulo">COLHEITADEIRAS</span>
+                <strong id="cat-colheitadeiras">0</strong>
+                <small>unidades</small>
+              </div>
+              <div class="metrica">
+                <span class="metrica-rotulo">CAMINHÕES</span>
+                <strong id="cat-caminhoes">0</strong>
+                <small>unidades</small>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Horas de Uso por Máquina (Semanal)</h3>
+              <div class="legenda-grafico">
+                <span><i style="background:#2E7D32"></i>Uso normal</span>
+                <span><i style="background:#7F8C8D"></i>Ocioso</span>
+              </div>
+            </div>
+            <div class="grafico-container"><canvas id="grafico-horas-frota"></canvas></div>
+          </div>
+        </div>
+
+        <div class="grade-base">
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Gasto Logístico Diário (R$)</h3>
+              <div class="filtros">
+                <select><option>Esta semana</option><option>Este mês</option></select>
+              </div>
+            </div>
+            <div class="grafico-container base"><canvas id="grafico-gasto-logistico"></canvas></div>
+          </div>
+          <div class="card calendario-card" id="calendario-frota"></div>
+        </div>
+      </section>
+
+      <!-- =================================================== -->
+      <!-- PÁGINA 2: ANÁLISE DE IMAGENS -->
+      <!-- =================================================== -->
+      <section class="pagina ativa" id="pagina-imagens">
+        <div class="cabecalho-pagina">
+          <div>
+            <h1 class="titulo-pagina">Análise de Plantio via Drone</h1>
+            <p class="texto-muted">Mapeamento de estresse, pragas e falhas usando IA sobre imagens aéreas.</p>
+          </div>
+          <span class="tag-exemplo">⚠️ Dados de exemplo</span>
+        </div>
+
+        <div class="card card-explicacao">
+          <h3>🧠 Como funciona esta análise?</h3>
+          <p>
+            O AgroAnalyst aplica um modelo de visão computacional (PyTorch) sobre as imagens
+            capturadas pelo drone. Cada talhão é segmentado e cada pixel é classificado em uma
+            das categorias: <strong>vegetação saudável</strong>, <strong>estresse hídrico</strong>,
+            <strong>falha de plantio</strong> ou <strong>infestação por pragas</strong>.
+            O mapa de calor abaixo é um <strong>exemplo demonstrativo</strong> — em produção, a
+            imagem seria substituída pela última captura do seu drone.
+          </p>
+        </div>
+
+        <div class="grade-tres">
+          <div class="card card-indicador">
+            <div class="indicador-info">
+              <span class="rotulo">IMAGENS ENVIADAS</span>
+              <h2>14</h2>
+              <p class="legenda">Fotos no lote atual</p>
+            </div>
+            <div class="icone-grande">📸</div>
+          </div>
+          <div class="card card-indicador">
+            <div class="indicador-info">
+              <span class="rotulo">TEMPO DE ANÁLISE</span>
+              <h2>00:45</h2>
+              <p class="legenda">Processamento IA</p>
+              <div class="barra-progresso"><div style="width:60%"></div></div>
+              <small>Fila: 60% concluída</small>
+            </div>
+            <div class="icone-grande">🤖</div>
+          </div>
+          <div class="card card-indicador">
+            <div class="indicador-info">
+              <span class="rotulo">SAÚDE DA LAVOURA</span>
+              <h2>88%</h2>
+              <p class="legenda">Índice geral saudável</p>
+            </div>
+            <canvas class="donut" data-valor="88" data-cor="#2E7D32"></canvas>
+          </div>
+        </div>
+
+        <div class="grade-imagens">
+          <div class="card painel-deteccoes">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Estresse de Cultura Detectado</h3>
+              <span class="badge-data">29 Ago 2024</span>
+            </div>
+            <p class="texto-muted" style="margin-bottom:14px">
+              8 ocorrências identificadas no talhão <strong>Trigo 029</strong>.
+              Clique em uma ocorrência para inspecionar.
+            </p>
+            <ul class="lista-deteccoes" id="lista-deteccoes"></ul>
+          </div>
+
+          <div class="card painel-mapa">
+            <div class="rotulo-exemplo">EXEMPLO</div>
+            <div class="visualizador-imagem map-main">
+              <img src="exemplo-analise-1.png" alt="Exemplo de mapa de estresse de cultura via drone" onerror="this.style.display='none'" />
+              <div class="tooltip-mapa">
+                <strong>Estresse detectado</strong>
+                <p>Identificado em 29/08 · 4,5 ac</p>
+                <span class="severidade alta">Problema de solo</span>
+              </div>
+            </div>
+            <div class="legenda-cores">
+              <span><i style="background:#2E7D32"></i>Saudável</span>
+              <span><i style="background:#FFD54F"></i>Moderado</span>
+              <span><i style="background:#EF6C00"></i>Alerta</span>
+              <span><i style="background:#C62828"></i>Crítico</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grade-dois">
+          <div class="card painel-mapa">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Índice de Vegetação (NDVI) — Exemplo</h3>
+              <span class="badge-data">Captura: 28 Ago 2024</span>
+            </div>
+            <div class="visualizador-imagem map-sec">
+              <img src="exemplo-analise-2.png" alt="Exemplo de imagem NDVI" onerror="this.style.display='none'" />
+            </div>
+            <p class="texto-muted" style="margin-top:10px">
+              Áreas em <strong style="color:#2E7D32">verde</strong> indicam alta densidade
+              vegetativa. Tons <strong style="color:#EF6C00">alaranjados</strong> e
+              <strong style="color:#C62828">vermelhos</strong> indicam baixa atividade
+              fotossintética e devem ser inspecionados em campo.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="titulo-card" style="margin-bottom: 16px;">Distribuição de Anomalias Detectadas</h3>
+            <div class="grafico-com-lista">
+              <div class="grafico-container list-graph"><canvas id="grafico-anomalias"></canvas></div>
+              <ul class="lista-itens">
+                <li><i style="background:#EF6C00"></i>Falha de Sulco — Talhão 03</li>
+                <li><i style="background:#2E7D32"></i>Invasoras — Talhão 07</li>
+                <li><i style="background:#1565C0"></i>Estresse Hídrico — Talhão 12</li>
+                <li><i style="background:#C62828"></i>Pragas — Talhão 05</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card area-upload" id="area-upload" style="margin-bottom: 20px;">
+          <div class="upload-conteudo">
+            <div class="icone-upload">☁️</div>
+            <h3>Enviar novas imagens do drone</h3>
+            <p>Arraste e solte ou</p>
+            <button class="botao-primario">Selecionar Arquivos</button>
+            <small>Formatos: JPG, PNG, TIFF — Máx. 50MB cada</small>
+          </div>
+        </div>
+
+        <div class="grade-base">
+          <div class="card">
+            <h3 class="titulo-card" style="margin-bottom: 16px;">Evolução da Previsão de Quebra de Safra</h3>
+            <div class="grafico-container base"><canvas id="grafico-quebra-safra"></canvas></div>
+          </div>
+          <div class="card calendario-card" id="calendario-imagens"></div>
+        </div>
+      </section>
+
+      <!-- =================================================== -->
+      <!-- PÁGINA 3: PREÇO DE GRÃOS -->
+      <!-- =================================================== -->
+      <section class="pagina" id="pagina-graos">
+        <div class="cabecalho-pagina">
+          <div>
+            <h1 class="titulo-pagina">Cotação das Principais Commodities</h1>
+            <p class="texto-muted">Dados de mercado atualizados — Cepea / B3.</p>
+          </div>
+        </div>
+
+        <div class="grade-tres">
+          <div class="card card-cotacao">
+            <span class="rotulo">SOJA</span>
+            <h2>R$ 142,80</h2>
+            <span class="variacao positiva">▲ +1,2%</span>
+            <small>Saca 60kg</small>
+          </div>
+          <div class="card card-cotacao">
+            <span class="rotulo">MILHO</span>
+            <h2>R$ 68,40</h2>
+            <span class="variacao negativa">▼ -0,8%</span>
+            <small>Saca 60kg</small>
+          </div>
+          <div class="card card-cotacao">
+            <span class="rotulo">CAFÉ</span>
+            <h2>R$ 1.250,00</h2>
+            <span class="variacao positiva">▲ +2,4%</span>
+            <small>Saca 60kg</small>
+          </div>
+        </div>
+
+        <div class="grade-dois">
+          <div class="card">
+            <h3 class="titulo-card">Comparativo por Praça</h3>
+            <div class="metricas">
+              <div class="metrica">
+                <span class="metrica-rotulo">MATO GROSSO</span>
+                <strong>R$ 140,20</strong>
+                <small>+0,9%</small>
+              </div>
+              <div class="metrica">
+                <span class="metrica-rotulo">PARANÁ</span>
+                <strong>R$ 143,50</strong>
+                <small>+1,4%</small>
+              </div>
+              <div class="metrica">
+                <span class="metrica-rotulo">RIO GRANDE DO SUL</span>
+                <strong>R$ 144,10</strong>
+                <small>+1,8%</small>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Variação Semanal</h3>
+            </div>
+            <div class="grafico-com-lista">
+              <div class="grafico-container list-graph"><canvas id="grafico-graos-semana"></canvas></div>
+              <ul class="lista-noticias">
+                <li><strong>Cepea:</strong> Soja em alta com demanda chinesa</li>
+                <li><strong>Mercado:</strong> Estoques de milho recuam no MT</li>
+                <li><strong>Clima:</strong> Chuvas favorecem safra do Sul</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="grade-base">
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Histórico de Longo Prazo</h3>
+              <div class="filtros">
+                <select id="seletor-grao">
+                  <option value="soja">Soja</option>
+                  <option value="milho">Milho</option>
+                  <option value="cafe">Café</option>
+                </select>
+                <select id="seletor-periodo-graos">
+                  <option value="30">30 dias</option>
+                  <option value="90">90 dias</option>
+                  <option value="180">6 meses</option>
+                </select>
+              </div>
+            </div>
+            <div class="grafico-container base"><canvas id="grafico-graos-historico"></canvas></div>
+          </div>
+          <div class="card calendario-card" id="calendario-graos"></div>
+        </div>
+      </section>
+
+      <!-- =================================================== -->
+      <!-- PÁGINA 4: PAINEL FINANCEIRO -->
+      <!-- =================================================== -->
+      <section class="pagina" id="pagina-financeiro">
+        <div class="cabecalho-pagina">
+          <div>
+            <h1 class="titulo-pagina">Painel Financeiro</h1>
+            <p class="texto-muted">Visão consolidada de receitas, despesas, margens e projeções.</p>
+          </div>
+          <div class="filtros">
+            <select id="filtro-periodo-fin">
+              <option value="mes">Mês atual</option>
+              <option value="trimestre">Último trimestre</option>
+              <option value="ano" selected>Ano completo</option>
+            </select>
+            <select id="filtro-tipo-grafico">
+              <option value="bar">Barras</option>
+              <option value="line">Linhas</option>
+              <option value="pie">Pizza</option>
+              <option value="doughnut">Rosca</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grade-kpi">
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Total Receita</span>
+            <h2 class="valor-kpi verde">R$ 55.235,00</h2>
+            <small class="texto-muted">vs mês anterior  ▲ +6,4%</small>
+          </div>
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Total Despesas</span>
+            <h2 class="valor-kpi vermelho">R$ 39.067,00</h2>
+            <small class="texto-muted">vs mês anterior  ▼ -2,1%</small>
+          </div>
+          <div class="card kpi-fin destaque-margem">
+            <span class="rotulo-kpi">% Margem Lucro Líquido</span>
+            <canvas class="donut donut-grande" data-valor="12" data-cor="#2E7D32"></canvas>
+            <small class="texto-muted">Objetivo: 12,0%</small>
+          </div>
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Contas a Receber</span>
+            <h2 class="valor-kpi">R$ 609,00</h2>
+            <small class="texto-muted">vs mês anterior</small>
+          </div>
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Contas a Pagar</span>
+            <h2 class="valor-kpi">R$ 538,00</h2>
+            <small class="texto-muted">vs mês anterior</small>
+          </div>
+        </div>
+
+        <div class="grade-kpi">
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Lucro Líquido</span>
+            <h2 class="valor-kpi">R$ 6.715,00</h2>
+            <small class="texto-muted">vs mês anterior</small>
+          </div>
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Saldo no final do mês</span>
+            <h2 class="valor-kpi">R$ 7.684,00</h2>
+            <small class="texto-muted">vs mês anterior</small>
+          </div>
+          <div class="card kpi-fin alinhar-centro">
+            <span class="rotulo-kpi">% Orçamento Receita</span>
+            <canvas class="donut" data-valor="92" data-cor="#2E7D32"></canvas>
+            <small class="texto-muted">Orçamento R$ 60.000  ·  Balanço -R$ 4.765</small>
+          </div>
+          <div class="card kpi-fin alinhar-centro">
+            <span class="rotulo-kpi">% Orçamento Despesas</span>
+            <canvas class="donut" data-valor="93" data-cor="#C62828"></canvas>
+            <small class="texto-muted">Orçamento R$ 42.000  ·  Balanço -R$ 2.933</small>
+          </div>
+          <div class="card kpi-fin">
+            <span class="rotulo-kpi">Índice de Liquidez</span>
+            <h2 class="valor-kpi verde">3,02</h2>
+            <small class="texto-muted">Objetivo: 3 ou mais</small>
+          </div>
+        </div>
+
+        <div class="grade-dois">
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Receitas e Despesas</h3>
+              <div class="legenda-grafico">
+                <span><i style="background:#2E7D32"></i>Receita</span>
+                <span><i style="background:#C62828"></i>Despesa</span>
+                <span><i style="background:#2C3E50"></i>Lucro</span>
+              </div>
+            </div>
+            <div class="grafico-container"><canvas id="grafico-receita-despesa"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Saldo no final do mês</h3>
+            </div>
+            <div class="grafico-container"><canvas id="grafico-saldo-mes"></canvas></div>
+          </div>
+        </div>
+
+        <div class="grade-dois">
+          <div class="card">
+            <h3 class="titulo-card">Demonstração de Resultados</h3>
+            <table class="tabela tabela-resultado">
+              <tbody>
+                <tr><td>Total Receita</td><td class="num">R$ 55.235,00</td><td class="pct">100%</td></tr>
+                <tr><td>Custo de bens vendidos</td><td class="num">R$ 17.566,00</td><td class="pct">32%</td></tr>
+                <tr class="destaque"><td>Lucro bruto</td><td class="num">R$ 37.669,00</td><td class="pct">68%</td></tr>
+                <tr><td>Total Despesas Operacionais</td><td class="num">R$ 21.501,00</td><td class="pct">39%</td></tr>
+                <tr class="destaque"><td>Lucro Operacional</td><td class="num">R$ 16.168,00</td><td class="pct">29%</td></tr>
+                <tr><td>Imposto</td><td class="num">R$ 9.453,00</td><td class="pct">17%</td></tr>
+                <tr class="destaque-forte"><td>Lucro Líquido</td><td class="num">R$ 6.715,00</td><td class="pct">12%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <h3 class="titulo-card">Distribuição de Custos</h3>
+            <div class="metricas-coluna">
+              <div class="metrica-linha">
+                <div class="metrica-info"><span>⛽ Combustível</span><strong>R$ 12.800</strong></div>
+                <div class="barra-progresso"><div style="width:80%;background:#EF6C00"></div></div>
+              </div>
+              <div class="metrica-linha">
+                <div class="metrica-info"><span>🌱 Defensivos / Insumos</span><strong>R$ 9.600</strong></div>
+                <div class="barra-progresso"><div style="width:60%;background:#1565C0"></div></div>
+              </div>
+              <div class="metrica-linha">
+                <div class="metrica-info"><span>👷 Mão de Obra</span><strong>R$ 7.200</strong></div>
+                <div class="barra-progresso"><div style="width:45%;background:#2E7D32"></div></div>
+              </div>
+              <div class="metrica-linha">
+                <div class="metrica-info"><span>🔧 Manutenção</span><strong>R$ 3.200</strong></div>
+                <div class="barra-progresso"><div style="width:20%;background:#7F8C8D"></div></div>
+              </div>
+              <div class="metrica-linha">
+                <div class="metrica-info"><span>📑 Impostos</span><strong>R$ 6.267</strong></div>
+                <div class="barra-progresso"><div style="width:38%;background:#C62828"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:20px">
+          <div class="cabecalho-card">
+            <h3 class="titulo-card">Ganhos x Custos por Categoria</h3>
+            <small class="texto-muted">Use os filtros do topo para alternar período e tipo de gráfico</small>
+          </div>
+          <div class="grafico-container base"><canvas id="grafico-dinamico-fin"></canvas></div>
+        </div>
+
+        <div class="grade-base">
+          <div class="card">
+            <div class="cabecalho-card">
+              <h3 class="titulo-card">Projeção Financeira / Break-Even</h3>
+              <small class="texto-muted">Receita projetada vs custo acumulado</small>
+            </div>
+            <div class="grafico-container base"><canvas id="grafico-projecao-fin"></canvas></div>
+          </div>
+          <div class="card calendario-card" id="calendario-financeiro"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ MODAL: ADICIONAR VEÍCULO ============ -->
+  <div class="modal-overlay" id="modal-veiculo">
+    <div class="modal">
+      <div class="modal-cabecalho">
+        <h3>Adicionar Veículo à Frota</h3>
+        <button class="fechar-modal" id="fechar-modal">×</button>
+      </div>
+      <form id="form-veiculo" class="form">
+        <div class="form-linha">
+          <label>
+            Placa
+            <input type="text" name="placa" required placeholder="ABC-1234" />
+          </label>
+          <label>
+            Ano
+            <input type="number" name="ano" required min="1980" max="2030" placeholder="2023" />
+          </label>
+        </div>
+        <label>
+          Modelo
+          <input type="text" name="modelo" required placeholder="John Deere 6110J" />
+        </label>
+        <div class="form-linha">
+          <label>
+            Tipo
+            <select name="tipo" required>
+              <option value="Trator">Trator</option>
+              <option value="Colheitadeira">Colheitadeira</option>
+              <option value="Caminhão">Caminhão</option>
+            </select>
+          </label>
+          <label>
+            Horas/Km
+            <input type="number" name="horas" required min="0" placeholder="4500" />
+          </label>
+        </div>
+        <div class="form-linha">
+          <label>
+            Status
+            <select name="status" required>
+              <option value="Operação">Em operação</option>
+              <option value="Manutenção">Em manutenção</option>
+              <option value="Parado">Parado</option>
+            </select>
+          </label>
+          <label>
+            Última manutenção
+            <input type="date" name="manutencao" required />
+          </label>
+        </div>
+        <div class="modal-acoes">
+          <button type="button" class="botao-secundario" id="cancelar-modal">Cancelar</button>
+          <button type="submit" class="botao-primario">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
