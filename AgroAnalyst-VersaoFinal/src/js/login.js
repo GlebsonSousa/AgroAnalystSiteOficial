@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Verifica se a requisição foi bem-sucedida (status 200-299)
             if (resposta.ok) {
-                console.log('Login bem-sucedido:', dadosDaResposta);
+                window.location.href = '../perfil/index.html';
+                //console.log('Login bem-sucedido:', dadosDaResposta);
                 alert(dadosDaResposta.msg); // Mostra a mensagem de sucesso da API
                 localStorage.setItem('UsuarioLogado', 1)
                 // Exemplo: Salvar dados do usuário e redirecionar
